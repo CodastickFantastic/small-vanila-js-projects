@@ -6,6 +6,8 @@ const allMoles = document.querySelectorAll(".mole")
 const counter = document.getElementById("points")
 const spawnedMoles = document.getElementById("spawned-moles")
 const levelsBtn = document.querySelector(".level-section").querySelectorAll("button")
+const whackSound = new Audio("sounds/whack-sound.mp3")
+const whistle = new Audio("sounds/whistle.mp3")
 
 let startGame;
 let points = 0
@@ -56,7 +58,7 @@ function showMole(){
     allMoles.forEach(mole => {
         mole.classList.remove("active")
     })
-
+    whistle.play()
     //Show Current Mole
     currentMole.classList.add("active")
     currentMole.addEventListener("click", smashMole)
@@ -68,6 +70,7 @@ function showMole(){
 
 //Smash the mole
 function smashMole(){
+    whackSound.play()
     this.classList.remove("active")
     points ++
     counter.innerHTML = points
