@@ -9,9 +9,9 @@ const levelsBtn = document.querySelector(".level-section").querySelectorAll("but
 const whackSound = new Audio("sounds/whack-sound.mp3")
 const whistle = new Audio("sounds/whistle.mp3")
 
+let points;
+let molesCounter;
 let startGame;
-let points = 0
-let molesCounter = 0
 let isGameOn = false
 let speed = 600
 
@@ -29,6 +29,8 @@ startGameBtn.addEventListener("click", () => {
     if(isGameOn == false){
         startGame = setInterval(showMole, speed)
         isGameOn = true
+        points = 0
+        molesCounter = 0
         counter.innerHTML = points
         spawnedMoles.innerHTML = molesCounter
 
@@ -44,8 +46,6 @@ restarttGameBtn.addEventListener("click", () =>{
     allMoles.forEach(mole => {
         mole.classList.add("active")
     })
-    points = 0
-    molesCounter = 0
 })
 
 
