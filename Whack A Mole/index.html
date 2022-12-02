@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack A Santa Mole Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section>
+        <div id="container">
+            <div id="start-game">
+                <div id="cloud1"><h1>Whack A Santa Mole</h1></div>
+                <div class="start-stop">
+                    <button>Start Game</button>
+                    <button>Restart Game</button>
+                </div>
+                <div class="level-section">
+                    Choose Difficulty<br>
+                    <button value="800">Junior</button>
+                    <button value="600">Medium</button>
+                    <button value="400">Expert</button>
+                </div>
+                <p>Points: <span id="points"></span></p>
+                <p>Spawned Moles: <span id="spawned-moles"></span></p>
+            </div>
+            <div id="game-board">
+                <div id="grass">
+                    <div class="row">
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                        <div class="hole"><div class="mole"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>
