@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: aliceblue;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #121212;
+}
+
+#container{
+    width: 450px;
+    height: auto;
+    padding: 10px;
+    border-radius: 3%;
+    border: 1px solid aliceblue;
+}
+
+#header{
+    margin: 20px;
+    text-align: center;
+}
+
+#header h1{
+    margin-bottom: 10px;
+}
+
+#header #search{
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    color: black;
+}
+
+#main-content{
+    text-align: center;
+}
+
+#main-content #today{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+#main-content #today #temperature{
+    font-size: 30px;
+}
+
+#main-content #today #temp-min-max{
+    font-size: 13px;
+}
+
+#main-content p span{
+    font-weight: bold;
+}
+
+#footer{
+    margin: 10px;
+}
+
+
+
