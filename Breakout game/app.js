@@ -1,5 +1,5 @@
 const grid = document.querySelector(".grid");
-const scoreDisplay = document.getElementById("score")
+const scoreDisplay = document.getElementById("score");
 const blockWidh = 100;
 const blockHeight = 20;
 const boardWidth = 560;
@@ -8,6 +8,7 @@ const ballDiameter = 20;
 let timerId;
 let xDirection = -2;
 let yDirection = 2;
+let score = 0;
 
 const userStart = [230, 10];
 let currentPosition = userStart;
@@ -104,46 +105,84 @@ function moveBall() {
   ballCurentPosition[0] += xDirection;
   ballCurentPosition[1] += yDirection;
   drawBall();
-  checkForCollisions()
+  checkForCollisions();
 }
 
 timerId = setInterval(moveBall, 30);
 
 //check for collision
 function checkForCollisions() {
+  //check for block colisions
+  for (let i = 0; i < blocks.length; i++) {
+    if (
+      (ballCurentPosition[0] > blocks[i].bottomLeft[0] && ballCurentPosition[0] < blocks[i].bottomRight[0]) &&
+      ((ballCurentPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurentPosition[1] < blocks[i].topLeft[1])
+    ) {
+      const allBlocks = Array.from(document.querySelectorAll(".block"));
+      allBlocks[i].classList.remove('block')
+      blocks.splice(i, 1)
+      changeDirection()
+      score++
+      scoreDisplay.innerHTML = score
+
+      //chekc for win
+      if(blocks.length === 0){
+        scoreDisplay.innerHTML = "You won the game"
+        clearInterval(timerId)
+        document.removeEventListener("keydown", moveUser)
+      }
+
+
+    }
+  }
+
   //check for wall collisions
-  if (ballCurentPosition[0] >= (boardWidth - ballDiameter) ||
-        ballCurentPosition[1] >= (boardHeight - ballDiameter) ||
-        ballCurentPosition[0] <= 0) {
+  if (
+    ballCurentPosition[0] >= boardWidth - ballDiameter ||
+    ballCurentPosition[1] >= boardHeight - ballDiameter ||
+    ballCurentPosition[0] <= 0
+  ) {
     changeDirection();
   }
 
+  //check for user collisions
+
+  if(
+    (ballCurentPosition[0] > currentPosition[0] && ballCurentPosition[0] < currentPosition[0] + blockWidh) &&
+    (ballCurentPosition[1] > currentPosition[1] && ballCurentPosition[1] < currentPosition[1] + blockHeight)
+  ){
+    changeDirection()
+  }
+
   //chaeck for game over
-  if (ballCurentPosition[1] <= 0){
-    clearInterval(timerId)
-    scoreDisplay.innerHTML = "You lose xD"
-    document.removeEventListener("keydown", moveUser)
+  if (ballCurentPosition[1] <= 0) {
+    clearInterval(timerId);
+    scoreDisplay.innerHTML = "You lose xD";
+    document.removeEventListener("keydown", moveUser);
   }
 }
 
 function changeDirection() {
-    if(xDirection === 2 && yDirection === 2){
-        yDirection = -2
-        return
-    }
+  if (xDirection === -2 && yDirection === -2) {
+    yDirection = 2;
+    return;
+  }
 
-    if(xDirection === 2 && yDirection === -2){
-        xDirection = -2
-        return
-    }
+  if (xDirection === 2 && yDirection === -2) {
+    xDirection = -2;
+    return;
+  }
 
-    if(xDirection === -2 && yDirection === -2){
-        yDirection = 2
-        return
-    }
+  if (xDirection === -2 && yDirection === 2) {
+    xDirection = 2;
+    return;
+  }
 
-    if(xDirection === -2 && yDirection === 2){
-        xDirection = 2
-        return
-    }
+  if (xDirection === 2 && yDirection === 2) {
+    yDirection = -2;
+    return;
+  }
+
+  
 }
+ 
