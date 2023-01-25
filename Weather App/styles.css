@@ -23,6 +23,13 @@ body{
     border: 1px solid aliceblue;
 }
 
+@media(width < 460px){
+    #container{
+        width: 330px;
+    }
+}
+
+
 #header{
     margin: 20px;
     text-align: center;
