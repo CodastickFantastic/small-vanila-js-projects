@@ -23,7 +23,7 @@ body{
     border: 1px solid aliceblue;
 }
 
-@media (width < 460px){
+@media (max-width: 460px){
     #container{
         width: 330px;
     }

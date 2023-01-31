@@ -131,7 +131,7 @@ button.activeBtn{
     }
 }
 
-@media (width < 550px ){
+@media (max-width: 550px ){
     #game-board .hole{
         min-width: 65px;
         height: 100px;
